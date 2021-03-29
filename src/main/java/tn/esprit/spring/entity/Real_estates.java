@@ -1,7 +1,9 @@
 package tn.esprit.spring.entity;
+
+
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,10 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.OneToMany;
+
+
 @Entity 
 public class Real_estates implements Serializable{
-private static final long serialVersionUID = -6187465752707179593L;
+	
+
+	
+
+	private static final long serialVersionUID = -6187465752707179593L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id_real_estate;
@@ -24,9 +31,6 @@ private static final long serialVersionUID = -6187465752707179593L;
 	private int nb_room;
 	private String description;
 	private String title;
-	
-	@OneToMany(mappedBy="real_estates")
-	private List<Claim> claim;
 	
 	@Temporal (TemporalType.DATE)
 	private Date Creation_date;
@@ -91,15 +95,6 @@ public int getNbRoom() {
 public void setNbRoom(int nb_room) {
         this.nb_room=nb_room;
     }
-public List<Claim> getClaim() {
-	return claim;
+@OneToOne 
+private Ads ads;
 }
-
-public void setClaim(List<Claim> claim) {
-	this.claim = claim;
-}
-}
-//@OneToOne 
-//private Ads ads;
-// }
-

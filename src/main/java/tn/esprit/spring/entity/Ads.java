@@ -1,4 +1,5 @@
-/* package tn.esprit.spring.entity;
+package tn.esprit.spring.entity;
+
 
 
 
@@ -26,10 +27,9 @@ public class Ads implements Serializable  {
 
 	
 	private static final long serialVersionUID = 1558670426578301848L;
+	@OneToMany(mappedBy="ads")
 	private List<Favorite> favorite;
 	
-	@OneToMany(mappedBy="ads")
-	private Favorite favorites;
 	
 	public List<Favorite> getFavorite() {
 		return favorite;
@@ -96,7 +96,7 @@ public class Ads implements Serializable  {
 	public void setType(Type type) {
 		this.type = type;
 	}
-//les getters et setters sur quoi et le constructeur ??
+
 	@OneToOne(mappedBy="ads")
 	private Real_estates real_estates;
 
@@ -114,4 +114,4 @@ public class Ads implements Serializable  {
 } 
 
 
-*/
+

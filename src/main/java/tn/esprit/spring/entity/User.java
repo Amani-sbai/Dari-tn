@@ -10,8 +10,6 @@ import java.io.Serializable;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-
-
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="User_Role")
@@ -70,29 +68,5 @@ public class User implements Serializable {
     
     public String getEncrytedPassword() {
         return encrytedPassword;
+        }
     }
- 
-    public void setEncrytedPassword(String encrytedPassword) {
-        this.encrytedPassword = encrytedPassword;
-    }
-    
-    public Long getUserNumber() {
-        return nb;
-    }
- 
-    public void setUserNumber(Long nb) {
-        this.nb =nb;
-    }
-    
-    public String getUserEmail() {
-        return e_mail;
-    }
- 
- public void setUserEmail(String e_mail ) {
-        this.e_mail =e_mail; 
-    }
-
-
-
-}
-
