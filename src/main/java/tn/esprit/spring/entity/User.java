@@ -13,6 +13,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 import org.hibernate.mapping.Set;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -88,7 +89,7 @@ public class User implements Serializable {
 		Role = role;
 	}
     //send user_id to credit
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy="user") 
-     private Set<Credit> Credit;*/
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="user") 
+     private Set<Credit> Credit;
     }
      
