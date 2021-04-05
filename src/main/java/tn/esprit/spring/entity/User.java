@@ -1,6 +1,5 @@
 package tn.esprit.spring.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -10,10 +9,6 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-
-import org.hibernate.mapping.Set;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -88,8 +83,4 @@ public class User implements Serializable {
 	public void setRole(String role) {
 		Role = role;
 	}
-    //send user_id to credit
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="user") 
-     private Set<Credit> Credit;
     }
-     
