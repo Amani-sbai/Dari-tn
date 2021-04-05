@@ -1,7 +1,5 @@
 package tn.esprit.spring.entity;
 
-
-
 import java.io.Serializable;
 import java.util.Set;
 
@@ -22,14 +20,13 @@ public class Bank implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Id
+	private int id;
+	
 	@Column(name="NAME")
-	private String Name;
+	private String name;
 	
-	@Column(name="ADRESSE")
-	private String adresse;
-	
+	@Column(name="ADDRESS")
+	private String address;
 	
 	@Column(name="INTEREST")
 	private float interest;
@@ -43,44 +40,45 @@ public class Bank implements Serializable {
 	@Column(name="WEBSITE")
 	private String website;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Bank") 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="bank") 
 	private Set<Credit> Credit;
 	
 public Bank() {
 		
 	}
 	
-	public Bank (String name, String adresse, float interest, String email, int phone, String website){
-		this.Name = name;
-		this.adresse = adresse;
+	public Bank (int id, String name, String address, float interest, String email, int phone, String website){
+		this.id = id;
+		this.name = name;
+		this.address = address;
 		this.interest = interest;
 		this.email = email;
 		this.phone = phone;
 		this.website = website;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		this.Name = name;
+		this.name = name;
 	}
 
-	public String getAdresse() {
-		return adresse;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public float getInterest() {
@@ -107,12 +105,12 @@ public Bank() {
 		this.phone = phone;
 	}
 
-	public String getSiteweb() {
+	public String getWebsite() {
 		return website;
 	}
 
-	public void setSiteweb(String siteweb) {
-		this.website = siteweb;
+	public void setWebsite(String website) {
+		this.website = website;
 	}
 
 }

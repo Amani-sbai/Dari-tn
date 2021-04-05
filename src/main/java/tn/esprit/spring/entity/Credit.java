@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name= "CREDIT")
 public class Credit implements Serializable {
@@ -18,47 +17,54 @@ public class Credit implements Serializable {
 	private static final long serialVersionUID = -3619989487395029338L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Id
+	private int id;
+
 	@Column(name="Amount")
 	private float amount;
 	
 	@Column(name="Period")
-	private String period;
-	
+	private int period;
 	
 	@Column(name="Periodicity")
 	private String periodicity;
 
-	@Column(name="Bank")
-	private String bank;
-	
 	@Column(name="Interest")
 	private float interest;
 	
-	@Column(name="Stallements")
-	private String stallements;
+	@Column(name="Installment")
+	private int installment;
+	
+	@Column(name="Amount_of_Installment")
+	private float amountinstallment;
+	
+	@Column(name="Bank_Name")
+	private String bankname;
 	
 	@ManyToOne 
-	Bank Bank;
+	Bank bank;
+	@ManyToOne
+	 User user;
 	
-public Credit() {
-		
-	}
-	
-	public Credit (float amount, int period, String periodicity, String bank, float interest, String stallements){
-		this.amount = amount;
-		this.period = periodicity;
-		this.bank = bank;
-		this.interest = interest;
-		this.stallements = stallements;
+public Credit() {		
 	}
 
-	public Long getId() {
+	public Credit (float amount, int period, String periodicity, float interest,
+				   int installment, float amountinstallment, int id, String bankname){
+		this.id=id;
+		this.amount = amount;
+		this.period = period;
+		this.periodicity = periodicity;
+		this.interest = interest;
+		this.installment = installment;
+		this.amountinstallment = amountinstallment;
+		this.bankname = bankname;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -70,11 +76,11 @@ public Credit() {
 		this.amount = amount;
 	}
 
-	public String getPeriod() {
+	public int getPeriod() {
 		return period;
 	}
 
-	public void setPeriod(String period) {
+	public void setPeriod(int period) {
 		this.period = period;
 	}
 
@@ -86,14 +92,6 @@ public Credit() {
 		this.periodicity = periodicity;
 	}
 
-	public String getBank() {
-		return bank;
-	}
-
-	public void setBank(String bank) {
-		this.bank = bank;
-	}
-
 	public float getInterest() {
 		return interest;
 	}
@@ -102,12 +100,28 @@ public Credit() {
 		this.interest = interest;
 	}
 
-	public String getStallements() {
-		return stallements;
+	public int getInstallment() {
+		return installment;
 	}
 
-	public void setStallements(String stallements) {
-		this.stallements = stallements;
+	public void setInstallment(int installment) {
+		this.installment = installment;
+	}
+
+	public float getAmountinstallment() {
+		return amountinstallment;
+	}
+
+	public void setAmountinstallment(float amountinstallment) {
+		this.amountinstallment = amountinstallment;
+	}
+
+	public String getBankname() {
+		return bankname;
+	}
+
+	public void setBankname(String bankname) {
+		this.bankname = bankname;
 	}
 
 }
