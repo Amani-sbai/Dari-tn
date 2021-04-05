@@ -1,12 +1,12 @@
 package tn.esprit.spring.entity.controller;
 
+
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,8 +36,8 @@ public class RegistrationController {
 		 * Creating a User with the help of User class that we have declared. Setting
 		 * the First,Last and Email address of the sender.
 		 */
-		user.setFirstName("Melek");
-		user.setLastName("Souai");
+		user.setUserFirstName("Melek");
+		user.setUserLastName("Souai");
 		user.setE_mail("meleksouai1@esprit.tn"); //Receiver's email address
 
 		/*
@@ -63,8 +63,8 @@ public class RegistrationController {
 		 * Creating a User with the help of User class that we have declared. Setting
 		 * the First,Last and Email address of the sender.
 		 */
-		user.setFirstName("Melek");
-		user.setLastName("Souai");
+		user.setUserFirstName("Melek");
+		user.setUserLastName("Souai");
 		user.setE_mail("meleksouai1@esprit.tn"); //Receiver's email address
 
 		/*
@@ -79,4 +79,3 @@ public class RegistrationController {
 		return "Congratulations! Your mail has been send to the user.";
 	}
 }
-

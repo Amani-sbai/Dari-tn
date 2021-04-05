@@ -15,9 +15,6 @@ import javax.persistence.InheritanceType;
 @DiscriminatorColumn(name="User_Role")
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -38,14 +35,23 @@ public class User implements Serializable {
     @Column(name="number")
     private long nb;
     
-    @Column
+    
     private String e_mail;
     
+    private String Role;
 	public long  getUserId() {
         return userId;
     }
  
-    public void setUserId(Long userId) {
+    public String getE_mail() {
+		return e_mail;
+	}
+
+	public void setE_mail(String e_mail) {
+		this.e_mail = e_mail;
+	}
+
+	public void setUserId(Long userId) {
         this.userId = userId;
     }
     
@@ -69,4 +75,12 @@ public class User implements Serializable {
     public String getEncrytedPassword() {
         return encrytedPassword;
         }
+
+	public String getRole() {
+		return Role;
+	}
+
+	public void setRole(String role) {
+		Role = role;
+	}
     }
