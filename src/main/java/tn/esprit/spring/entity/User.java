@@ -8,20 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Set;
-
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+
+import org.hibernate.mapping.Set;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="User_Role")
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -42,14 +39,23 @@ public class User implements Serializable {
     @Column(name="number")
     private long nb;
     
-    @Column
+    
     private String e_mail;
     
+    private String Role;
 	public long  getUserId() {
         return userId;
     }
  
-    public void setUserId(Long userId) {
+    public String getE_mail() {
+		return e_mail;
+	}
+
+	public void setE_mail(String e_mail) {
+		this.e_mail = e_mail;
+	}
+
+	public void setUserId(Long userId) {
         this.userId = userId;
     }
     
@@ -73,8 +79,16 @@ public class User implements Serializable {
     public String getEncrytedPassword() {
         return encrytedPassword;
         }
+
+	public String getRole() {
+		return Role;
+	}
+
+	public void setRole(String role) {
+		Role = role;
+	}
     //send user_id to credit
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user") 
-     private Set<Credit> Credit;
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy="user") 
+     private Set<Credit> Credit;*/
     }
      
