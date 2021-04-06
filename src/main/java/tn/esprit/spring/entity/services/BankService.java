@@ -10,7 +10,7 @@ import tn.esprit.spring.entity.Bank;
 import tn.esprit.spring.repository.BankRepository;
 
 @Service 
-public class BankService {
+public class BankService implements IBankService {
 	@Autowired
 	private BankRepository bankRepository;  
 	//getting all banks
@@ -18,10 +18,6 @@ public class BankService {
 	{  
 		return (List<Bank>) bankRepository.findAll();
 	}  
-	//Add a bank
-	public Bank saveBank(Bank bank){
-		return bankRepository.save(bank);
-	}
 	//displaying bank info
 	public Bank getBankByName(String name) 
 	{  
@@ -33,10 +29,21 @@ public class BankService {
 		//Bank bank = bankRepository.findById(id).get();
 	bankRepository.deleteById(id);
 	}
-	//updating a record  
-	public Bank updateBank(Bank bank)   
-	{  
-		return bankRepository.save(bank);  
+	
+	@Override
+	public Bank getBankById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Bank saveBank(Bank bank) {
+		return bankRepository.save(bank);
+		
+	}
+	@Override
+	public Bank updateBank(Bank bank) {
+		return bankRepository.save(bank);
+		
 	}
 }
 

@@ -8,9 +8,9 @@ public interface IBankService {
   
 		public List<Bank> getAllBanks();
 		public Bank getBankById(int id);
-		public void saveBank(Bank bank);
+		public Bank saveBank(Bank bank);
 		public void deleteBank(int id) ;
-		public void updateBank(Bank bank);
+		public Bank updateBank(Bank bank);
 		public Bank getBankByName(String name);
 		
 		

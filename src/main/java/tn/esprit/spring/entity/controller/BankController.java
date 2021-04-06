@@ -14,25 +14,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Bank;
-import tn.esprit.spring.entity.services.BankService;
+import tn.esprit.spring.entity.services.IBankService;
 @RestController
 @RequestMapping(value="/Bank")
 public class BankController {
 	
 	@Autowired  
-	private BankService bankService;  
+	private IBankService IbankService;  
 	
 	//creating a get mapping that retrieves all the books detail from the database   
 	@GetMapping(value="/banks")  
 	@ResponseBody
 	private List<Bank> getAllBanks()   
 	{  
-	     return bankService.getAllBanks();  
+	     return IbankService.getAllBanks();  
 	}
 	@PostMapping(value="/savebank") 
 	@ResponseBody
 	public Bank saveBank(@RequestBody Bank bank){
-			bankService.saveBank(bank);
+			IbankService.saveBank(bank);
 		return bank;
 	}
 	
@@ -41,20 +41,20 @@ public class BankController {
 	@RequestMapping(value = "/getbank/{name}", method = RequestMethod.GET)
 	private Bank getBank(@PathVariable("name") String name)   
 	{  
-	     return bankService.getBankByName(name);  
+	     return IbankService.getBankByName(name);  
 	}
 	
 	@RequestMapping(value = "/deletebank/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	private void deleteBank(@PathVariable("id") int id)   
 	{  
-	     bankService.deleteBank(id);  
+	     IbankService.deleteBank(id);  
 	}  
 	
 	@PutMapping("/updatebank")  
 	private Bank update(@RequestBody Bank bank)   
 	{  
-	    bankService.updateBank(bank);
+	    IbankService.updateBank(bank);
 	    return bank;
 	}  
 	
