@@ -84,7 +84,7 @@ public class CreditController {
 	        helper.setSubject("Credit Simulation");
 	        helper.setText("Here is an attached file of your credit simulation");
 	      byte[] content = Files.readAllBytes(Paths.get(pdfService.generatePdf(Optional.of(credit)).getAbsolutePath()));
-	      helper.addAttachment("MyTestFile.pdf", new ByteArrayResource(content));
+	      helper.addAttachment("My Credit Simulation File.pdf", new ByteArrayResource(content));
 	        javaMailSender.send(message);
 	    }
 	        catch (MessagingException  e) {
