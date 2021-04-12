@@ -11,4 +11,5 @@ public interface ICreditService {
 	void saveCredit(Credit credit);
 	void deleteCredit(int id) ;
 	void updateCredit(Credit credit);
+	int Count(String name);
 }

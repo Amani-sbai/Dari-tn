@@ -1,7 +1,9 @@
 package tn.esprit.spring.entity.services;
 
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,16 +76,26 @@ public class CreditService {
 		credit.setInstallment(Number_Installments);
 		credit.setInterest(int_bank);
 		creditRepository.save(credit);
-		
-		/*String mailAdress=packRep.findById(pack.getId_pack()).get().getCustomer().getEmail();
-		//Receiver
-		msg.setTo( mailAdress); 
-		//mail subject
-		msg.setSubject("Confirmation Abonement"); 
-		//Mail body
-		msg.setText("votre abonnement est activé");
-		javaMailSender.send(msg);
-	    */
 		return credit;
 	}
+	//count credit by bank name
+		public int Count(String name){
+			int Occ = 0;
+			String bankname; 
+			bankname = bankService.getBankByName(name).getName();
+			Occ = creditRepository.countByBankname(bankname);
+			return Occ;	
+		}
+		//List Bank Stat
+		public Map<String, Integer> barGraph() {
+			Map<String, Integer> surveyMap = new LinkedHashMap<>();
+			surveyMap.put("BT", creditRepository.countByBankname("Banque de tunisie") );
+			surveyMap.put("BH", creditRepository.countByBankname("Banque de l'habitat"));
+			surveyMap.put("Attijari Bank", creditRepository.countByBankname("Attijari Bank"));
+			surveyMap.put("Amen Bank", creditRepository.countByBankname("Amen Bank"));
+			surveyMap.put("Banque Zitouna", creditRepository.countByBankname("Banque Zitouna"));
+			surveyMap.put("STB", creditRepository.countByBankname("Société Tunisienne de Banque"));
+			surveyMap.put("BNA", creditRepository.countByBankname("Banque Nationale Agricole"));
+			return surveyMap;
+		}
 }
